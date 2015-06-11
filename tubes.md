@@ -111,7 +111,6 @@ In the event you need to get some local hacking done, there's also a serial tube
 from pwn import *
 
 io = serialtube('/dev/ttyUSB0', baudrate=115200)
-...
 ```
 
 [docs]: https://binjitsu.readthedocs.org/en/latest/tubes.html

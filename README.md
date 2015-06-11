@@ -25,7 +25,7 @@ Last but not least, it also includes a wide array of exploitation assistance too
     + Secure Shell
     + Serial Ports
 - [Utility](utility.md)
-    + Hashing
+    + Encoding and Hashing
     + Packing / unpacking integers
     + Pattern generation
     + Safe evaluation

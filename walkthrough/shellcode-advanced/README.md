@@ -16,9 +16,10 @@ In particular, there are a few things to note about syntax:
 - `<%` and `%>` contain Python code blocks
 - `<%tag>` and `</%tag>` contain special tags defined by Pwntools or Mako
     + These are used to generate the function wrappers
-- `${variable}` is replaced with the Python variable (as passed through `str()` or `%s`)
-- `${function(...)}` is just any other function call.
-    + Mako templates just emit a string, this makes it very easy to nest them.
+- `${...}` is a Python expression
+    - `${var}` is replaced with the Python variable (as passed through `str()` or `%s`)
+    - `${function(...)}` is the same, the return value is inserted in its place
+        + Mako templates just emit a string, this makes it very easy to nest them!
 - Lines starting with `##` are ignored by Mako
 - Everything else is emitted verbatim.
 

@@ -18,9 +18,12 @@ Last but not least, it also includes a wide array of exploitation assistance too
 
 - [Installing Binjitsu](installing.md)
 - [Tubes](tubes.md)
-    + Hello Process
-    + Hello Network
-    + Hello SSH
+    + Basic Tubes
+    + Interactive Shells
+    + Processes
+    + Networking
+    + Secure Shell
+    + Serial Ports
 - [Utility](utility.md)
     + Hashing
     + Packing / unpacking integers

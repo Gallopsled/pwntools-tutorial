@@ -32,7 +32,7 @@ The basic functions that you'll probably want out of your IO are:
 - `pack(int)` - Sends a word-size packed integer
 - `unpack()` - Receives and unpacks a word-size integer
 
-## Hello Process
+## Hello World
 
 In order to create a tube to talk to a process, you just create a `process` object and give it the name of the target binary.
 

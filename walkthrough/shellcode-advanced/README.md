@@ -16,7 +16,11 @@ In particular, there are a few things to note about syntax:
 - `<%` and `>%` contain Python code blocks
 - `<%tag` and `/%tag>` contain special tags defined by Pwntools or Mako
     + These are used to generate the function wrappers
-- Python-style (`#`) comments are not emitted
+- `${variable}` is replaced with the Python variable (as passed through `str()` or `%s`)
+- `${function(...)}` is just any other function call.
+    + Mako templates just emit a string, this makes it very easy to nest them.
+- Lines starting with `##` are ignored by Mako
+- Everything else is emitted verbatim.
 
 After copying the below template to `pwnlib/shellcraft/templates/i386/linux/demo.asm`, it can be invoked from Python or the command-line tool.
 
@@ -33,29 +37,69 @@ $ shellcraft i386.linux.demo 1 hello 1 -f asm | head -n3
 ### Sample Template
 
 ```
-<% from pwnlib import constants %>
-<% from pwnlib.shellcraft.i386 import pushstr, mov %>
-<% from pwnlib.shellcraft.i386.linux import write %>
-<% from pwnlib.shellcraft import common %>
-<%page args="sock, message, loop=False"/>
+<%
+# The constants module lets the user provide the string 'SYS_execve',
+# and then we can resolve it to the integer value.
+#
+# For example, on i386, constants.eval('SYS_execve') == 11
+from pwnlib import constants
+
+# Pushstr provides a simple way to get a string onto the stack
+# with no NULLs or newlines in the emitted assembly.
+from pwnlib.shellcraft.i386 import pushstr
+
+# Mov provides a simple way to mov values into registers, or
+# between registers, without caring which is occurring.
+# It also is generally NULL- and newline-free.
+#
+# This is not a big deal on i386 since it's all the same instruction,
+# but on RISC architectures it's really a requirement.
+from pwnlib.shellcraft.i386 import mov
+
+# All of the Linux syscalls have a small wrapper template around them.
+# These are in turn a wrapper around the "syscall" template.
+# The syscall template is in turn as wrapper around the "mov" template
+# to move the values into the appropriate registers.
+#
+# Using the "write" syscall wrapper is much more convenient than writing
+# everything out by hand, even if some of the code is duplicated.
+from pwnlib.shellcraft.i386.linux import write
+
+# The label template provides a way to ensure that all labels are unique.
+# This is important if the same shellcode is included multiple times,
+# which is common for simple loops.
+from pwnlib.shellcraft.common import label
+%>
+
+## The arguments section allows us to specify arguments to the template.
+## These are turned into Python arguments for the Python function wrapper.
+<%page args="sock, message, spin=False"/>
+
+## The docstring is useful and informative for users, but is not required.
+## This is printed out with "shellcraft ... -?".
 <%docstring>
 Sends a message to a file descriptor, and then loops forever!
 
 Arguments:
     sock(int,reg): Socket to send the message over
     message(str): Message to send
-    loop(bool): Infinite loop after sending the message
+    spin(bool): Infinite loop after sending the message
 
 </%docstring>
+
+## Templates can embed Python logic directly.
+## Any variables or functions created in a block are available
+## immediately in the template.
 <%
-    target = common.label('target')
+    target = label('target')
 
     # This is not necessary since we're just passing it into
-    # the 'mov' template, which already does this.  Just for
-    # demonstration purposes.
+    # the 'mov' template, which already does this.
+    # Just for demonstration purposes.
     sock = constants.eval(sock)
 %>
 
+## Other templates are inserted as a Python function call.
     /* Push the message onto the stack */
     ${pushstr(message)}
 
@@ -65,7 +109,9 @@ Arguments:
     /* Invoke the write syscall */
     ${write('edi', 'esp', len(message))}
 
-%if loop:
+## Templates can include conditional logic, to either include
+## or exclude certain sections.
+%if spin:
     /* Loop forever */
 ${target}:
     jmp ${target}
@@ -97,4 +143,5 @@ One problem you may run into is Mako template caching.  In order to make Pwntool
 
 If you run into weird problems, try clearing the cache in `~/.binjitsu-cache/mako` (or `~/.pwntools-cache/mako`).
 
+[mako]: http://makotemplates.org
 [sh]: https://github.com/binjitsu/binjitsu/blob/master/pwnlib/shellcraft/templates/i386/linux/sh.asm

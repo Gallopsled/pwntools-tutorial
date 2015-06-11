@@ -57,7 +57,7 @@ io.recvline()
 
 ## Hello Network
 
-Creating a network connection is also easy, and has the exact same interface.
+Creating a network connection is also easy, and has the exact same interface.  A `remote` object connects to somewhere else, while a `listen` object waits for a connection.
 
 ```py
 from pwn import *
@@ -75,6 +75,14 @@ from pwn import *
 
 dns  = remote('8.8.8.8', 53, typ='udp')
 tcp6 = remote('google.com', 80, fam='ipv6')
+```
+
+Listening for connections isn't much more complex.  Note that this listens for exactly one connection, then stops listening.
+
+```py
+from pwn import *
+
+client = listen(8080).wait_for_connection()
 ```
 
 ## Hello SSH

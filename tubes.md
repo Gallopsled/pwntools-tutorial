@@ -36,6 +36,8 @@ The basic functions that you'll probably want out of your IO are:
 
 In order to create a tube to talk to a process, you just create a `process` object and give it the name of the target binary.
 
+[![asciicast](https://asciinema.org/a/47yxop4bl97ufyicd17os0tqb.png)](https://asciinema.org/a/47yxop4bl97ufyicd17os0tqb)
+
 ```py
 from pwn import *
 

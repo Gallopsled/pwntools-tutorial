@@ -40,6 +40,15 @@ $ asm -c mips nop
 00000000
 ```
 
+Pwntools is also aware of most common constants, and resolves them in a context-sensitive manner.
+
+```sh
+$ asm 'push SYS_execve'
+6a0b
+$ asm -c amd64 'push SYS_execve'
+6a3b
+```
+
 ## `disasm`
 
 Disasm is the counterpart to `asm`.
@@ -104,6 +113,24 @@ $ echo 'echo Hello!' | strace -e execve ./sh
 execve("./sh", ["./sh"], [/* 94 vars */]) = 0
 execve("/bin///sh", [0], [/* 0 vars */]) = 0
 Hello!
+```
+
+Some of the commands may take options, and all of them should be documented.  `shellcraft` will also resolve any constants it knows about.
+
+```sh
+$ shellcraft i386.linux.echo -?
+Writes a string to a file descriptor
+
+Arguments:
+    string(str): Message to print
+    sock: File descriptor.  Default is ebp.
+$ shellcraft i386.linux.echo "Hello, world" STDOUT_FILENO
+686f726c64686f2c20776848656c6c6a015b89e16a0c5a6a0458cd80
+$ shellcraft i386.linux.mov eax SYS_execve -fasm
+    push 0xb
+    pop eax
+$ shellcraft i386.linux.mov eax SYS_execve
+6a0b58
 ```
 
 ### Launching GDB

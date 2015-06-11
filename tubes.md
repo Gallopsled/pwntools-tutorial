@@ -55,6 +55,20 @@ io.recvline()
 # 'MYVAL\n'
 ```
 
+Reading binary data isn't a problem either.
+
+```py
+from pwn import *
+
+io = process(['cat', '/dev/urandom'])
+
+io.recvn(4)
+# '\xa8\xf9+\xc9'
+
+io.unpack()
+# 2690638891
+```
+
 ## Hello Network
 
 Creating a network connection is also easy, and has the exact same interface.  A `remote` object connects to somewhere else, while a `listen` object waits for a connection.

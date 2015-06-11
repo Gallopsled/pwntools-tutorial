@@ -17,3 +17,18 @@ Everything should be A-OK if the following command succeeds:
 ```sh
 $ python -c 'from pwn import *'
 ```
+
+## Foreign Architectures
+
+If you want to assemble or disassemble code for foreign architectures, you need an appropriate `binutils` installation.  For Ubuntu and Mac OS X users, the [installation instructions][binutils] are very straightforward.  The pre-built binaries are available from Ubuntu Launchpad.  These are built by Ubuntu, on their servers, using the original unmodified source package -- no need to trust maintainers!
+
+For example, to install `binutils` for MIPS:
+
+```sh
+$ apt-get install software-properties-common
+$ apt-add-repository ppa:pwntools/binutils
+$ apt-get update
+$ apt-get install binutils-mips-linux-gnu
+```
+
+[binutils]: https://binjitsu.readthedocs.org/en/latest/install/binutils.html

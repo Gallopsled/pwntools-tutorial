@@ -32,7 +32,7 @@ The basic functions that you'll probably want out of your IO are:
 - `pack(int)` - Sends a word-size packed integer
 - `unpack()` - Receives and unpacks a word-size integer
 
-## Hello World
+## Processes and Basic Features
 
 In order to create a tube to talk to a process, you just create a `process` object and give it the name of the target binary.
 
@@ -69,7 +69,23 @@ io.unpack()
 # 2690638891
 ```
 
-## Hello Network
+## Interactive Sessions
+
+Did you land a shell on the game server?  Hurray!  It's pretty easy to use it interactively.
+
+```py
+from pwn import *
+
+# Let's pretend we're uber 1337 and landed a shell.
+io = process('sh')
+
+# <exploit goes here>
+
+io.interactive()
+```
+
+
+## Networking
 
 Creating a network connection is also easy, and has the exact same interface.  A `remote` object connects to somewhere else, while a `listen` object waits for a connection.
 
@@ -99,7 +115,7 @@ from pwn import *
 client = listen(8080).wait_for_connection()
 ```
 
-## Hello SSH
+## Secure Shell
 
 SSH connectivity is similarly simple.  Compare the code below with that in "Hello Process" above.
 
@@ -117,7 +133,7 @@ io.recvline()
 ```
 
 
-## Hello Serial
+## Serial Ports
 
 In the event you need to get some local hacking done, there's also a serial tube.  As always, there is more information in the [full online documentation][serial].
 

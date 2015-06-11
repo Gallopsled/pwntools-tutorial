@@ -13,8 +13,8 @@ The templates are all located in the `pwnlib/shellcraft/templates/ARCH/OS` direc
 For Pwntools, the general format of a template looks like what's shown below.
 In particular, there are a few things to note about syntax:
 
-- `<%` and `>%` contain Python code blocks
-- `<%tag` and `/%tag>` contain special tags defined by Pwntools or Mako
+- `<%` and `%>` contain Python code blocks
+- `<%tag>` and `</%tag>` contain special tags defined by Pwntools or Mako
     + These are used to generate the function wrappers
 - `${variable}` is replaced with the Python variable (as passed through `str()` or `%s`)
 - `${function(...)}` is just any other function call.

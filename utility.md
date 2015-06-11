@@ -115,6 +115,21 @@ print hexdump(read('/dev/urandom', 32))
 # 00000010  09 d8 1c f2  9b 4a 9e 94  14 2b 55 7c  4e a8 52 a5  │····│·J··│·+U|│N·R·│
 # 00000020
 ```
+
 ## Patten Generation
 
-## Safe Evaluation
+Pattern generation is a very handy way to find offsets without needing to do math.
+
+Let's say we have a straight buffer overflow, and we generate a pattern and provide it to the target application.
+
+```py
+io = process(...)
+io.send(cyclic(512))
+```
+
+In the core dump, we might see that the crash occurs at 0x61616178.  We can avoid needing to do any analysis of the crash frame by just punching that number back in and getting an offset.
+
+```py
+cyclic_find(0x61616178)
+# 92
+```

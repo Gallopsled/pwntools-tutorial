@@ -134,7 +134,7 @@ And a few things to note about general "good style" for templates.
 
 # FAQ and Common Problems
 
-## "Reserved wodrs declared in template"
+## "Reserved words declared in template"
 
 You can't have any variables named `loop`, among some other things.  It's a limitation of Mako.
 

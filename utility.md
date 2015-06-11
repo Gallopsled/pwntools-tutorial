@@ -21,6 +21,35 @@ from pwn import *
 1234 == unpack(pack(1234))
 ```
 
+## Packing and Unpacking Integers
+
+This is probably the most common thing you'll do, so it's at the top.  The main `pack` and `unpack` functions are aware of the global settings in [`context`](context.md) such as `endian`, `bits`, and `sign`.
+
+You can also specify them explitily in the function call.
+
+```py
+pack(1)
+# '\x01\x00\x00\x00'
+
+pack(-1)
+# '\xff\xff\xff\xff'
+
+pack(2**32 - 1)
+# '\xff\xff\xff\xff'
+
+pack(1, endian='big')
+# '\x00\x00\x00\x01'
+
+p16(1)
+# '\x01\x00'
+
+hex(unpack('AAAA'))
+# '0x41414141'
+
+hex(u16('AA'))
+# '0x41414141'
+```
+
 ## File I/O
 
 A single function call and it does what you want it to.
@@ -31,6 +60,8 @@ from pwn import *
 write('filename', 'data')
 read('filename')
 # 'data'
+read('filename', 1)
+# 'd'
 ```
 
 ## Hashing and Encoding
@@ -52,8 +83,38 @@ md5filehex('file') == '5d41402abc4b2a76b9719d911017c592'
 sha1sumhex('hello') == 'aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d'
 ```
 
-## Packing and Unpacking Integers
+#### URL Encoding
 
+```py
+urlencode("Hello, World!") == '%48%65%6c%6c%6f%2c%20%57%6f%72%6c%64%21'
+```
+
+#### Hex Encoding
+
+```py
+enhex('hello')
+# '68656c6c6f'
+unhex('776f726c64')
+# 'world'
+```
+
+#### Bit Manipulation and Hex Dumping
+
+```py
+bits(0b1000001) == bits('A')
+# [0, 0, 0, 1, 0, 1, 0, 1]
+unbits([0,1,0,1,0,1,0,1])
+# 'U'
+```
+
+#### Hex Dumping
+
+```py
+print hexdump(read('/dev/urandom', 32))
+# 00000000  65 4c b6 62  da 4f 1d 1b  d8 44 a6 59  a3 e8 69 2c  │eL·b│·O··│·D·Y│··i,│
+# 00000010  09 d8 1c f2  9b 4a 9e 94  14 2b 55 7c  4e a8 52 a5  │····│·J··│·+U|│N·R·│
+# 00000020
+```
 ## Patten Generation
 
 ## Safe Evaluation

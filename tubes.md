@@ -55,18 +55,21 @@ io.recvline()
 # 'MYVAL\n'
 ```
 
-Reading binary data isn't a problem either.
+Reading binary data isn't a problem either.  You can receive up-to a number of bytes with `recv`, or block for an exact count with `recvn`.
 
 ```py
 from pwn import *
 
-io = process(['cat', '/dev/urandom'])
+io = process(['sh', '-c', 'echo A; sleep 1; echo B; sleep 1; echo C; sleep 1; echo DDD'])
+
+io.recv()
+# 'A\n'
 
 io.recvn(4)
-# '\xa8\xf9+\xc9'
+# 'B\nC\n'
 
-io.unpack()
-# 2690638891
+hex(io.unpack())
+# 0xa444444
 ```
 
 ## Interactive Sessions

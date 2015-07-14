@@ -9,6 +9,8 @@ from pwn import *
 context.arch = 'amd64'
 ```
 
+Which informs binjitsu that shellcode generated will be for `amd64`, and that the default word size is 64 bits
+
 ## Context Settings
 
 ### arch

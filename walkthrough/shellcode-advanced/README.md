@@ -8,6 +8,10 @@ First, all of the `shellcraft` templates are really just [Mako][mako] templates.
 
 The templates are all located in the `pwnlib/shellcraft/templates/ARCH/OS` directories.  For example `$ shellcraft i386.linux.sh` is actually invoking the template defined in [`pwnlib/shellcraft/templates/i386/linux/sh.asm`][sh]
 
+## Syntax Highlighting
+
+This generally helps make the templates more readable.  Binjitsu has a [syntax highlighting](https://github.com/binjitsu/binjitsu/blob/master/extra/textmate/README.md) plug-in for Sublime Text / TextMate.
+
 ## Anatomy of a Simple Template
 
 For Pwntools, the general format of a template looks like what's shown below.

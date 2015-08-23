@@ -2,6 +2,13 @@
 
 Binjitsu makes interacting with ELF files relatively straightforward.
 
++ [Loading ELF files](#loading-elf-files)
++ [Using Symbols](#using-symbols)
++ [Changing the Base Address](#changing-the-base-address)
++ [Reading ELF Files](#reading-elf-files)
++ [Patching ELF Files](#patching-elf-files)
++ [Searching ELF Files](#searching-elf-files)
+
 ## Loading ELF files
 
 ELF files are loaded by path.  Upon being loaded, some security-relevant attributes about the file are printed.

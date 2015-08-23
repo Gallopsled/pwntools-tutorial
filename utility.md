@@ -1,3 +1,18 @@
+Table of Contents
+=================
+
+  * [Utility Functions](#utility-functions)
+    * [Packing and Unpacking Integers](#packing-and-unpacking-integers)
+    * [File I/O](#file-io)
+    * [Hashing and Encoding](#hashing-and-encoding)
+        * [Base64](#base64)
+        * [Hashes](#hashes)
+        * [URL Encoding](#url-encoding)
+        * [Hex Encoding](#hex-encoding)
+        * [Bit Manipulation and Hex Dumping](#bit-manipulation-and-hex-dumping)
+        * [Hex Dumping](#hex-dumping)
+    * [Patten Generation](#patten-generation)
+
 # Utility Functions
 
 About half of Binjitsu is utility functions so that you no longer need to copy paste things like this around:

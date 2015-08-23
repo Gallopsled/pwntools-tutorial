@@ -1,13 +1,18 @@
+Table of Contents
+=================
+
+  * [ELFs](#elfs)
+    * [Loading ELF files](#loading-elf-files)
+    * [Using Symbols](#using-symbols)
+    * [Changing the Base Address](#changing-the-base-address)
+    * [Reading ELF Files](#reading-elf-files)
+    * [Patching ELF Files](#patching-elf-files)
+    * [Searching ELF Files](#searching-elf-files)
+
+
 # ELFs
 
-Binjitsu makes interacting with ELF files relatively straightforward.
-
-+ [Loading ELF files](#loading-elf-files)
-+ [Using Symbols](#using-symbols)
-+ [Changing the Base Address](#changing-the-base-address)
-+ [Reading ELF Files](#reading-elf-files)
-+ [Patching ELF Files](#patching-elf-files)
-+ [Searching ELF Files](#searching-elf-files)
+Binjitsu makes interacting with ELF files relatively straightforward, via the `ELF` class.  You can find the full documentation on [RTD](https://binjitsu.readthedocs.org/en/latest/elf.html).
 
 ## Loading ELF files
 

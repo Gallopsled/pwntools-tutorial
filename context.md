@@ -1,15 +1,20 @@
-# Context
+Table of Contents
+=================
 
-+ [arch](#arch)
-+ [bits](#bits)
-+ [binary](#binary)
-+ [endian](#endian)
-+ [log_file](#log_file)
-+ [log_level](#log_level)
-+ [sign](#sign)
-+ [terminal](#terminal)
-+ [timeout](#timeout)
-+ [update](#update)
+  * [Context](#context)
+    * [Context Settings](#context-settings)
+      * [arch](#arch)
+      * [bits](#bits)
+      * [binary](#binary)
+      * [endian](#endian)
+      * [log_file](#log_file)
+      * [log_level](#log_level)
+      * [sign](#sign)
+      * [terminal](#terminal)
+      * [timeout](#timeout)
+      * [update](#update)
+
+# Context
 
 The `context` object is a global, thread-aware object which contains various settins used by `binjitsu`.
 

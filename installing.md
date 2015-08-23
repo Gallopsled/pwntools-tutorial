@@ -1,3 +1,10 @@
+Table of Contents
+=================
+
+  * [Installing Binjitsu](#installing-binjitsu)
+    * [Verifying Installation](#verifying-installation)
+    * [Foreign Architectures](#foreign-architectures)
+
 # Installing Binjitsu
 
 This process is as straightforward as it can be.  Ubuntu 14.04 and 12.04 are the only "officially supported" platforms, in that they're the only platforms we do automated testing on.

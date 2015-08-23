@@ -118,8 +118,12 @@ $ asm nop | disasm
 
 ### `shellcraft`
 
-The `shellcraft` command is the command-line interface to the internal `shellcraft` module.  
+The `shellcraft` command is the command-line interface to the internal `shellcraft` module.  On the command-line, the full context must be specified, in the order of `arch.os.template`.
 
+```
+$ shellcraft i386.linux.sh
+6a68682f2f2f73682f62696e6a0b5889e331c999cd80
+```
 
 ## Foreign Architectures
 

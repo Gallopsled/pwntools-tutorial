@@ -1,3 +1,17 @@
+Table of Contents
+=================
+
+  * [Tubes](#tubes)
+    * [Basic IO](#basic-io)
+      * [Receiving data](#receiving-data)
+      * [Sending data](#sending-data)
+      * [Manipulating integers](#manipulating-integers)
+    * [Processes and Basic Features](#processes-and-basic-features)
+    * [Interactive Sessions](#interactive-sessions)
+    * [Networking](#networking)
+    * [Secure Shell](#secure-shell)
+    * [Serial Ports](#serial-ports)
+
 # Tubes
 
 Tubes are effectively I/O wrappers for most types of I/O you'll need to perform:

@@ -1,5 +1,16 @@
 # Context
 
++ [arch](#arch)
++ [bits](#bits)
++ [binary](#binary)
++ [endian](#endian)
++ [log_file](#log_file)
++ [log_level](#log_level)
++ [sign](#sign)
++ [terminal](#terminal)
++ [timeout](#timeout)
++ [update](#update)
+
 The `context` object is a global, thread-aware object which contains various settins used by `binjitsu`.
 
 Generally at the top of an exploit, you'll find something like:

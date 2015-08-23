@@ -8,6 +8,7 @@ Table of Contents
     * [Reading ELF Files](#reading-elf-files)
     * [Patching ELF Files](#patching-elf-files)
     * [Searching ELF Files](#searching-elf-files)
+    * [Building ELF Files](#building-elf-files)
 
 
 # ELFs
@@ -183,4 +184,16 @@ The above example prints something like:
 ```
 0x420b82
 0x420c5e
+```
+
+## Building ELF Files
+
+ELF files can be created from scratch relatively easy.  All of these functions are context-aware.  The relevant functions are `from_bytes` and `from_assembly`.  Each returns an `ELF` object, which can easily be saved to file.
+
+```
+from pwn import *
+
+ELF.from_bytes('\xcc').save('int3-1')
+ELF.from_assembly('int3').save('int3-2')
+ELF.from_assembly('nop', arch='powerpc').save('powerpc-nop')
 ```

@@ -16,7 +16,7 @@ Table of Contents
 
 # Context
 
-The `context` object is a global, thread-aware object which contains various settins used by `binjitsu`.
+The `context` object is a global, thread-aware object which contains various settins used by `pwntools`.
 
 Generally at the top of an exploit, you'll find something like:
 
@@ -25,7 +25,7 @@ from pwn import *
 context.arch = 'amd64'
 ```
 
-Which informs binjitsu that shellcode generated will be for `amd64`, and that the default word size is 64 bits
+Which informs pwntools that shellcode generated will be for `amd64`, and that the default word size is 64 bits
 
 ## Context Settings
 

@@ -10,7 +10,7 @@ The templates are all located in the `pwnlib/shellcraft/templates/ARCH/OS` direc
 
 ## Syntax Highlighting
 
-This generally helps make the templates more readable.  Binjitsu has a [syntax highlighting](https://github.com/binjitsu/binjitsu/blob/master/extra/textmate/README.md) plug-in for Sublime Text / TextMate.
+This generally helps make the templates more readable.  Pwntools has a [syntax highlighting](https://github.com/Gallopsled/pwntools/blob/master/extra/textmate/README.md) plug-in for Sublime Text / TextMate.
 
 ## Anatomy of a Simple Template
 
@@ -146,7 +146,7 @@ You can't have any variables named `loop`, among some other things.  It's a limi
 
 One problem you may run into is Mako template caching.  In order to make Pwntools as speedy as possible, the compiled templates are cached.  This is sometimes a burden on development of new shellcode, but in general is useful.
 
-If you run into weird problems, try clearing the cache in `~/.binjitsu-cache/mako` (or `~/.pwntools-cache/mako`).
+If you run into weird problems, try clearing the cache in `~/.pwntools-cache/mako` (or `~/.pwntools-cache/mako`).
 
 [mako]: http://makotemplates.org
-[sh]: https://github.com/binjitsu/binjitsu/blob/master/pwnlib/shellcraft/templates/i386/linux/sh.asm
+[sh]: https://github.com/Gallopsled/pwntools/blob/master/pwnlib/shellcraft/templates/i386/linux/sh.asm

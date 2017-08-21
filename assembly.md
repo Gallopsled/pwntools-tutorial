@@ -14,7 +14,7 @@ Table of Contents
 
 # Assembly
 
-Binjitsu makes it very easy to perform assembly in almost any architecture, and comes with a wide variety of canned-but-customizable shellcode ready to go out-of-the-box.
+Pwntools makes it very easy to perform assembly in almost any architecture, and comes with a wide variety of canned-but-customizable shellcode ready to go out-of-the-box.
 
 In the [`walkthrough`](walkthrough) directory, there are several longer shellcode tutorials.  This page gives you the basics.
 
@@ -34,7 +34,7 @@ print enhex(asm('xor edi, edi'))
 
 ## Canned assembly (`shellcraft`)
 
-The `shellcraft` module gives you pre-canned assembly.  It is generally customizable.  The easiest way to find out which `shellcraft` templates exist is to look at the [documentation on RTD](https://binjitsu.readthedocs.org/en/latest/shellcraft.html).
+The `shellcraft` module gives you pre-canned assembly.  It is generally customizable.  The easiest way to find out which `shellcraft` templates exist is to look at the [documentation on RTD](https://pwntools.readthedocs.org/en/latest/shellcraft.html).
 
 ```py
 from pwn import *

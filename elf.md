@@ -13,7 +13,7 @@ Table of Contents
 
 # ELFs
 
-Binjitsu makes interacting with ELF files relatively straightforward, via the `ELF` class.  You can find the full documentation on [RTD](https://binjitsu.readthedocs.org/en/latest/elf.html).
+Pwntools makes interacting with ELF files relatively straightforward, via the `ELF` class.  You can find the full documentation on [RTD](https://pwntools.readthedocs.org/en/latest/elf.html).
 
 ## Loading ELF files
 

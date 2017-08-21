@@ -15,7 +15,7 @@ Table of Contents
 
 # Utility Functions
 
-About half of Binjitsu is utility functions so that you no longer need to copy paste things like this around:
+About half of Pwntools is utility functions so that you no longer need to copy paste things like this around:
 
 ```py
 import struct

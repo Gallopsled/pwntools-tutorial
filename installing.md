@@ -1,18 +1,18 @@
 Table of Contents
 =================
 
-  * [Installing Binjitsu](#installing-binjitsu)
+  * [Installing Pwntools](#installing-pwntools)
     * [Verifying Installation](#verifying-installation)
     * [Foreign Architectures](#foreign-architectures)
 
-# Installing Binjitsu
+# Installing Pwntools
 
 This process is as straightforward as it can be.  Ubuntu 14.04 and 12.04 are the only "officially supported" platforms, in that they're the only platforms we do automated testing on.
 
 ```sh
 apt-get update
 apt-get install python2.7 python-pip python-dev git
-pip install --upgrade git+https://github.com/binjitsu/binjitsu.git
+pip install --upgrade git+https://github.com/Gallopsled/pwntools.git
 ```
 
 Everything else, you're on your own.
@@ -38,4 +38,4 @@ $ apt-get update
 $ apt-get install binutils-mips-linux-gnu
 ```
 
-[binutils]: https://binjitsu.readthedocs.org/en/latest/install/binutils.html
+[binutils]: https://pwntools.readthedocs.org/en/latest/install/binutils.html

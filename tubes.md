@@ -160,8 +160,8 @@ from pwn import *
 io = serialtube('/dev/ttyUSB0', baudrate=115200)
 ```
 
-[docs]: https://binjitsu.readthedocs.org/en/latest/tubes.html
-[process]: https://binjitsu.readthedocs.org/en/latest/tubes/processes.html
+[docs]: https://pwntools.readthedocs.org/en/latest/tubes.html
+[process]: https://pwntools.readthedocs.org/en/latest/tubes/processes.html
 [ssh]: ssh.md
-[remote]: https://binjitsu.readthedocs.org/en/latest/tubes/sock.html
-[serial]: https://binjitsu.readthedocs.org/en/latest/tubes/serial.html
+[remote]: https://pwntools.readthedocs.org/en/latest/tubes/sock.html
+[serial]: https://pwntools.readthedocs.org/en/latest/tubes/serial.html

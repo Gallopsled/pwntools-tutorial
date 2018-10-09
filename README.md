@@ -6,7 +6,7 @@ These tutorials do not make any effort to explain reverse engineering or exploit
 
 # Introduction
 
-Pwntools (a fork of [`pwntools`](https://pwntools.com)) is a grab-bag of tools to make exploitation during CTFs as painless as possible, and to make exploits as easy to read as possible.
+[`Pwntools`](https://pwntools.com) is a grab-bag of tools to make exploitation during CTFs as painless as possible, and to make exploits as easy to read as possible.
 
 There are bits of code everyone has written a million times, and everyone has their own way of doing it.  Pwntools aims to provide all of these in a semi-standard way, so that you can stop copy-pasting the same `struct.unpack('>I', x)` code around and isntead use more slightly more legible wrappers like `pack` or `p32` or even `p64(..., endian='big', sign=True)`.
 

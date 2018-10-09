@@ -131,7 +131,7 @@ print hexdump(read('/dev/urandom', 32))
 # 00000020
 ```
 
-## Patten Generation
+## Pattern Generation
 
 Pattern generation is a very handy way to find offsets without needing to do math.
 

@@ -77,7 +77,7 @@ Many of the shellcraft templates are just syscall wrappers, designed to make she
 Like the `asm` tool, `shellcraft` has multiple output modes.
 
 ```sh
-$ shellcraft i386.linux.sh -fasm
+$ shellcraft i386.linux.sh
 6a68682f2f2f73682f62696e89e331c96a0b5899cd80
 $ shellcraft i386.linux.sh -fasm
     /* push '/bin///sh\x00' */

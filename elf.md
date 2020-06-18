@@ -9,7 +9,7 @@ Table of Contents
     * [Patching ELF Files](#patching-elf-files)
     * [Searching ELF Files](#searching-elf-files)
     * [Building ELF Files](#building-elf-files)
-
+    * [Running and Debugging ELF Files](#running-and-debugging-elf-files)
 
 # ELFs
 
@@ -196,4 +196,22 @@ from pwn import *
 ELF.from_bytes('\xcc').save('int3-1')
 ELF.from_assembly('int3').save('int3-2')
 ELF.from_assembly('nop', arch='powerpc').save('powerpc-nop')
+```
+
+## Running and Debugging ELF Files
+
+If you have an `ELF` object, you can run or debug it directly.  The following are equivalent:
+
+```py
+>>> io = elf.process()
+# vs
+>>> io = process(elf.path)
+```
+
+Similarly, you can launch a debugger trivially attached to your ELF.  This is super useful when testing shellcode, without the need for a C wrapper to load and debug it.
+
+```py
+>>> io = elf.debug()
+# vs
+>>> io = gdb.debug(elf.path)
 ```

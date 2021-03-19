@@ -29,6 +29,10 @@ Last but not least, it also includes a wide array of exploitation assistance too
     + Packing / unpacking integers
     + Pattern generation
     + Safe evaluation
+- [Bytes vs. Strings](bytes.md)
+    + Python2
+    - Python3
+        + Gotchas
 - [Context](context.md)
     + Architecture
     + Endianness

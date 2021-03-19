@@ -39,7 +39,7 @@ Pwntools goes through great lengths to follow the "principle of least surprise" 
     00000007
 ```
 
-However, sometimes things break down a bit.  Note here how 00f7e2 gets converted to c299c3b7c3a2.
+However, sometimes things break down a bit.  Note here how 99f7e2 gets converted to c299c3b7c3a2.
 
 ```
 >>> shellcode = "\x99\xf7\xe2"

@@ -125,7 +125,7 @@ unbits([0,1,0,1,0,1,0,1])
 #### Hex Dumping
 
 ```py
-print hexdump(read('/dev/urandom', 32))
+print(hexdump(read('/dev/urandom', 32)))
 # 00000000  65 4c b6 62  da 4f 1d 1b  d8 44 a6 59  a3 e8 69 2c  │eL·b│·O··│·D·Y│··i,│
 # 00000010  09 d8 1c f2  9b 4a 9e 94  14 2b 55 7c  4e a8 52 a5  │····│·J··│·+U|│N·R·│
 # 00000020

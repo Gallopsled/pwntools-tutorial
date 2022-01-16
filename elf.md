@@ -48,11 +48,11 @@ from pwn import *
 
 e = ELF('/bin/bash')
 
-print "%#x -> license" % e.symbols['bash_license']
-print "%#x -> execve" % e.symbols['execve']
-print "%#x -> got.execve" % e.got['execve']
-print "%#x -> plt.execve" % e.plt['execve']
-print "%#x -> list_all_jobs" % e.functions['list_all_jobs'].address
+print("%#x -> license" % e.symbols['bash_license'])
+print("%#x -> execve" % e.symbols['execve'])
+print("%#x -> got.execve" % e.got['execve'])
+print("%#x -> plt.execve" % e.plt['execve'])
+print("%#x -> list_all_jobs" % e.functions['list_all_jobs'].address)
 ```
 
 This would print something like the following:
@@ -74,16 +74,16 @@ from pwn import *
 
 e = ELF('/bin/bash')
 
-print "%#x -> base address" % e.address
-print "%#x -> entry point" % e.entry
-print "%#x -> execve" % e.symbols['execve']
+print("%#x -> base address" % e.address)
+print("%#x -> entry point" % e.entry)
+print("%#x -> execve" % e.symbols['execve'])
 
-print "---"
+print("---")
 e.address = 0x12340000
 
-print "%#x -> base address" % e.address
-print "%#x -> entry point" % e.entry
-print "%#x -> execve" % e.symbols['execve']
+print("%#x -> base address" % e.address)
+print("%#x -> entry point" % e.entry)
+print("%#x -> execve" % e.symbols['execve'])
 ```
 
 This should print something like:
@@ -107,14 +107,14 @@ from pwn import *
 
 e = ELF('/bin/bash')
 
-print repr(e.read(e.address, 4))
+print(repr(e.read(e.address, 4)))
 
 p_license = e.symbols['bash_license']
 license   = e.unpack(p_license)
-print "%#x -> %#x" % (p_license, license)
+print("%#x -> %#x" % (p_license, license))
 
-print e.read(license, 14)
-print e.disasm(e.symbols['main'], 12)
+print(e.read(license, 14))
+print(e.disasm(e.symbols['main'], 12))
 ```
 
 This prints something like:
@@ -176,7 +176,7 @@ from pwn import *
 e = ELF('/bin/bash')
 
 for address in e.search('/bin/sh\x00'):
-    print hex(address)
+    print(hex(address))
 ```
 
 The above example prints something like:

@@ -25,10 +25,10 @@ The most basic example, is to convert assembly into shellcode.
 ```py
 from pwn import *
 
-print repr(asm('xor edi, edi'))
+print(repr(asm('xor edi, edi')))
 # '1\xff'
 
-print enhex(asm('xor edi, edi'))
+print(enhex(asm('xor edi, edi')))
 # 31ff
 ```
 
@@ -39,10 +39,10 @@ The `shellcraft` module gives you pre-canned assembly.  It is generally customiz
 ```py
 from pwn import *
 help(shellcraft.sh)
-print '---'
-print shellcraft.sh()
-print '---'
-print enhex(asm(shellcraft.sh()))
+print('---')
+print(shellcraft.sh())
+print('---')
+print(enhex(asm(shellcraft.sh())))
 ```
 ```
 Help on function sh in module pwnlib.shellcraft.internal:
@@ -134,10 +134,10 @@ from pwn import *
 
 context.arch = 'arm'
 
-print repr(asm('mov r0, r1'))
+print(repr(asm('mov r0, r1')))
 # '\x01\x00\xa0\xe1'
 
-print enhex(asm('mov r0, r1'))
+print(enhex(asm('mov r0, r1')))
 # 0100a0e1
 ```
 
@@ -150,8 +150,8 @@ from pwn import *
 
 context.arch = 'arm'
 
-print shellcraft.sh()
-print enhex(asm(shellcraft.sh()))
+print(shellcraft.sh())
+print(enhex(asm(shellcraft.sh())))
 ```
 ```
     adr r0, bin_sh

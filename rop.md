@@ -33,7 +33,7 @@ rop = ROP(elf)
 
 This will automatically load the binary, and extract most simple gadgets from it.  For example, if you want to load the `rbx` register:
 
-```
+```py
 rop.rbx
 # Gadget(0x5fd5, ['pop rbx', 'ret'], ['rbx'], 0x8)
 ```
@@ -44,7 +44,7 @@ Here we can see the address of the gadget, the contents of its disassembly, what
 
 Since in our example, `/bin/sh` is position-independent (i.e. uses ASLR), we can adjust the load address on the ELF object first.
 
-```
+```py
 elf.address = 0xff000000
 rop = ROP(elf)
 rop.rbx
@@ -55,14 +55,14 @@ rop.rbx
 
 You can ask the ROP object how to load any register you want, through magic accessors.  We used `rbx` above, but we can also look for other registers.
 
-```
+```py
 rop.rbx
 # Gadget(0xff005fd5, ['pop rbx', 'ret'], ['rbx'], 0x8)
 ```
 
 If the register cannot be loaded, the return value is `None`.  In our example, there are no `pop rcx; ret` gadgets for example.
 
-```
+```py
 rop.rcx
 # None
 ```
@@ -71,7 +71,7 @@ rop.rcx
 
 Pwntools intentionally excludes most non-trivial gadgets, but you can see a list of what it has loaded by looking at the `ROP.gadgets` property, which maps the address of  a gadget to the gadget itself.
 
-```
+```py
 rop.gadgets
 # {4278225723: Gadget(0xff008b3b, ['add esp, 0x10', 'pop rbx', 'pop rbp', 'pop r12', 'ret'], ['rbx', 'rbp', 'r12'], 0x20),
 #  4278278088: Gadget(0xff0157c8, ['add esp, 0x130', 'pop rbp', 'ret'], ['rbp'], 0x138),
@@ -124,7 +124,7 @@ print(hexdump(bytes(rop)))
 
 The real power of Pwntools' ROP tooling is the ability to invoke arbitrary functions, either via magic accessors or via the `ROP.call()` routine.
 
-```
+```py
 elf = ELF('/bin/sh')
 rop = ROP(elf)
 rop.call(0xdeadbeef, [0, 1])
@@ -137,7 +137,7 @@ print(rop.dump())
 
 Notice here that it's using a 32-bit ABI, which is not correct.  We can also do ROP against 64-bit binaries, but we need to set `context.arch` accordingly.  We can use `context.binary` to do this automagically.
 
-```
+```py
 context.binary = elf = ELF('/bin/sh')
 rop = ROP(elf)
 rop.call(0xdeadbeef, [0, 1])
@@ -153,7 +153,7 @@ print(rop.dump())
 
 If your library has a function you want to call in its GOT/PLT, or there are symbols for the binary, you can invoke function names directly.
 
-```
+```py
 context.binary = elf = ELF('/bin/sh')
 rop = ROP(elf)
 rop.execve(0xdeadbeef)

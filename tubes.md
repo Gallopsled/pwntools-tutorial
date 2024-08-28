@@ -143,7 +143,7 @@ from pwn import *
 
 session = ssh('bandit0', 'bandit.labs.overthewire.org', password='bandit0', port=2220)
 
-io = session.process('sh', env={"PS1":""})
+io = session.process('/bin/sh', env={"PS1":""})
 io.sendline('echo Hello, world!')
 io.recvline()
 # 'Hello, world!\n'

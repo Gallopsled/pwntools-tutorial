@@ -12,7 +12,7 @@ Table of Contents
 	  * [Specifying a Terminal Window](#specifying-a-terminal-window)
 	  * [Environment Variables](#environment-variables)
 	  * [Unable to Attach to Processes](#unable-to-attach-to-processes)
-	  * [argv0 and argc==0](#argv0-and-argc==0)
+	  * [argv0 and argc==0](#argv0-and-argc0)
 
 Pwntools has rich support for using a debugger in your exploit workflow, and debuggers
 are very useful when developing exploits when issues with exploits arise.

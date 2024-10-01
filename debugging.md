@@ -277,6 +277,24 @@ EOF
 Some challenges require that they are launched with `argv[0]` set to a specific
 value, or even that it's NULL (i.e. `argc==0`).
 
-It is not possible to launch a processs with this configuration via `gdb.debug()`,
-but you can use `gdb.attach()`.  This is because of limitations of launching
-binaries under gdbserver.
+Since version 4.13.0, Pwntools supports launching binaries under gdb while
+modifying or omitting `argv[0]`. The `args` can be set to anything as long
+as you specify the binary to launch in the `exe` parameter.
+
+```py
+>>> io = gdb.debug(args=[b'\xde\xad\xbe\xef'], gdbscript='continue', exe='/bin/sh')
+>>> io.sendline(b'echo $0')
+>>> io.recvline()
+b'00000000: dead beef 0a\n'
+```
+
+It's possible to omit all `args` too to have `argc==0` but beware that the Linux
+kernel [prevents processes from having an empty argv since version 5.18](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dcd46d897adb70d63e025f175a00a89797d31a43)
+in [reaction to a vulnerability](https://lwn.net/Articles/882799/).
+
+```py
+>>> io = gdb.debug([], stdin=PTY, gdbscript='continue', exe=sys.executable)
+>>> io.sendlineafter(b'>>> ', b'import sys; print(sys.argv)')
+>>> io.recvline()
+b"[]\n"  # a patched kernel would show b"['']\n"
+```

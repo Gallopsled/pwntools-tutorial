@@ -284,8 +284,10 @@ as you specify the binary to launch in the `exe` parameter.
 ```py
 >>> io = gdb.debug(args=[b'\xde\xad\xbe\xef'], gdbscript='continue', exe='/bin/sh')
 >>> io.sendline(b'echo $0')
->>> io.recvline()
-b'00000000: dead beef 0a\n'
+>>> hexdump(io.recvline())
+00000000  de ad be ef  0a
+    │····│·│
+00000005
 ```
 
 It's possible to omit all `args` too to have `argc==0` but beware that the Linux

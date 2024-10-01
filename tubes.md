@@ -141,7 +141,7 @@ You can also do more complex things with SSH, such as port forwarding and file u
 ```py
 from pwn import *
 
-session = ssh('bandit0', 'bandit.labs.overthewire.org', password='bandit0', port=2220)
+session = ssh('bandit0', 'bandit.labs.overthewire.org', 2220, password='bandit0')
 
 io = session.process('/bin/sh', env={"PS1":""})
 io.sendline('echo Hello, world!')
